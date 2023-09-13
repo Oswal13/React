@@ -8,25 +8,36 @@ import Admin from './views/AdminView'
 import Horoscopo from './data/horoscopo';
 
 
+function Main(){
+  
+  const [data,setData]=useState(Horoscopo)
 
-const router = createBrowserRouter([{
-  path:"/",
-  element : <Login/> ,
-},
-{
-  path: "/home",
-  element: <Home/>
-},
-{
-  path: "/admin-view",
-  element: <Admin/>
+  
+
+  const router = createBrowserRouter([{
+    path:"/",
+    element : <Login/> ,
+  },
+  {
+    path: "/home",
+    element: <Home />
+  },
+  {
+    path: "/admin-view",
+    element: <Admin />
+  }
+  ])
+
+
+  return (<React.StrictMode>
+          <RouterProvider router = {router} />
+          </React.StrictMode>
+          )
 }
-])
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router = {router} />
-  </React.StrictMode>,
-)
+
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Main/>)
 

@@ -7,10 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AdminView() {
 
-  //const [datos,setDatos] = useState(horoscopo)
   const [openEdit,setopenEdit]=useState(false)
   
-  const [datoSelec,setDatosSelec]=useState(null)
+  const [datoSelec,setDatosSelec]=useState()
   
   const llaveModal = (elemento)=>{
     setopenEdit(!openEdit)
@@ -51,9 +50,37 @@ function AdminView() {
         Editar {datoSelec ? datoSelec.Titulo : ""}
       </ModalHeader>
       <ModalBody>
-        Que picha mae!
+        <FormGroup>
+          <p>Informacion:</p>
+          <textarea
+          onChange={e=>setDatosSelec(...datoSelec.Informacion,e)}
+          style={{
+            width: '100%',
+            height: '100px',
+            }}
+            value={datoSelec? datoSelec.Informacion:""}
+          />
+        </FormGroup>
+        <FormGroup>
+          <p>Fechas</p>
+          <input type="text" value={datoSelec? datoSelec.fecha:""}
+          onChange={e=>setDatosSelec(...datoSelec.fecha,e)}
+          style={{width:"100%"}}/>
+        </FormGroup>
+        <FormGroup>
+          <p>Imagen:</p>
+          <textarea
+          onChange={e=>setDatosSelec(...datoSelec.Simbolo,e)}
+          style={{
+            width: '100%',
+            height: '100px',
+            }}
+            value={datoSelec? datoSelec.Simbolo:""}
+          />
+        </FormGroup>
       </ModalBody>
       <ModalFooter>
+            <button type="button" onClick={llaveModal}>Editar</button>
             <button type="button" onClick={llaveModal}>Cerrar</button>
       </ModalFooter>
      </Modal>
